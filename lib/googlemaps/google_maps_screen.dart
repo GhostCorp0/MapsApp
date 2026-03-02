@@ -7,11 +7,7 @@ class GoogleMapScreen extends StatefulWidget {
   @override
   State<GoogleMapScreen> createState() => _GoogleMapScreenState();
 }
-
-class _GoogleMapScreenState extends State<GoogleMapScreen> {
-  GoogleMapController? _controller;
-
-  final LatLng _initialPosition = const LatLng(28.6139, 77.2090);
+ final LatLng _initialPosition = const LatLng(28.6139, 77.2090);
 
   @override
   Widget build(BuildContext context) {
