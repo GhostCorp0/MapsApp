@@ -18,20 +18,3 @@ class GoogleMapScreen extends StatefulWidget {
       body: GoogleMap(
         initialCameraPosition: CameraPosition(
           target: _initialPosition,
-          zoom: 14,
-        ),
-        onMapCreated: (controller) {
-          _controller = controller;
-        },
-        markers: {
-          Marker(
-            markerId: const MarkerId('marker_1'),
-            position: _initialPosition,
-          ),
-        },
-        myLocationEnabled: true,
-        myLocationButtonEnabled: true,
-      ),
-    );
-  }
-}
