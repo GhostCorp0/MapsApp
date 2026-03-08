@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:maps_app/googlemaps/api_services/get_coordinates_from_placeid.dart';
 import 'package:maps_app/googlemaps/api_services/get_places.dart';
+import 'package:maps_app/googlemaps/api_services/nearby_search_model.dart';
 import 'package:maps_app/googlemaps/api_services/places_from_coordinates.dart';
 
 import '../constants.dart';
@@ -37,6 +38,17 @@ class ApiServices {
 
     if(response.statusCode == 200){
       return GetCoordinatesFromPlaceId.fromJson(jsonDecode(response.body));
+    }else {
+      throw Exception("API ERROR : placeFromCoordinates");
+    }
+  }
+
+  Future<NearbySearchModel> getNearbySearch(String text,double lat,double lng) async {
+    Uri url = Uri.parse("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=$lat,$lng&radius=1000&types=$text&key=${Constants.apiKey}");
+    var response = await http.get(url);
+
+    if(response.statusCode == 200){
+      return NearbySearchModel.fromJson(jsonDecode(response.body));
     }else {
       throw Exception("API ERROR : placeFromCoordinates");
     }
